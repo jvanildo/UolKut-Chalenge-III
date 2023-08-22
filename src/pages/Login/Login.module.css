@@ -1,0 +1,39 @@
+.article {
+    padding: 0 1rem;
+    display: flex;
+    gap: 2rem;
+    max-height: 37.5rem;
+}
+
+.article aside {
+    position: relative;
+    max-width: 50rem;
+}
+
+.article aside img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 16px;
+}
+
+.article aside p {
+    position: absolute;
+    bottom: 2rem;
+    left: 2rem;
+
+    max-width: 80%;
+    color: var(--dark-40);
+    font-size: var(--4xl);
+    letter-spacing: -2px;
+}
+
+@media (max-width: 800px) {
+    .login_container {
+        grid-template-rows: 5rem auto 3rem;
+    }
+
+    .article aside {
+        display: none;
+    }
+}

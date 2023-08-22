@@ -1,0 +1,44 @@
+.isMobile {
+  display: none;
+}
+
+.profile_container {
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  height: 100%;
+
+  padding: 1.25rem;
+}
+
+.rightContainer {
+  display: grid;
+  align-content: space-between;
+
+}
+
+.dois > section {
+  max-width: 100%!important;
+}
+
+/* TESTES, TEMPORÁRIO */
+@media (max-width: 800px) {
+  .main {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .isDesktop {
+    display: none;
+  }
+
+  .isMobile {
+    display: block;
+    order: 1;
+  }
+}

@@ -1,0 +1,44 @@
+.formDetailsContainer {
+  overflow-y: scroll;
+}
+
+.formDetailsContainer textarea {
+  background-color: #EFF3F8;
+  padding: 16px;
+  border: none;
+  width: 100%;
+  border-radius: 8px;
+  color: var(--dark-10);
+  resize: none;
+  margin-bottom: 1rem;
+
+}
+
+.formDetailsContainer select {
+  background-color: #EFF3F8;
+  padding: 16px;
+  border: none;
+  width: 100%;
+  border-radius: 8px;
+  color: var(--dark-10);
+  margin-bottom: 1rem;
+}
+
+.button_end {
+  background-color: var(--brand-color);
+  color: white;
+}
+
+.button_end:hover{
+  opacity: 0.8;
+}
+
+.button_back {
+  color: var(--brand-color);
+  background-color: #EFF3F8;
+
+}
+
+.button_back:hover{
+  opacity: 0.7;
+}

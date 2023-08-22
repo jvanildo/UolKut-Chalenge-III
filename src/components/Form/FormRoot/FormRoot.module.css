@@ -1,0 +1,100 @@
+.formRootContainer {
+  display: flex;
+  flex-direction: column;
+  background: var(--dark-30);
+  border-radius: 16px;
+
+  max-height: 37.5rem;
+  height: 37.5rem;
+
+  width: 24rem;
+
+  padding: 3rem 1.5rem;
+}
+
+.formRootContainer header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding-bottom: 2.5rem;
+}
+
+.formRootContainer header h2 {
+  color: var(--brand-color);
+  font-size: clamp(var(--xl), 4vw, var(--2xl));
+}
+
+.formRootContainer form {
+  scrollbar-width: none;
+  padding: 0 0.20rem;
+}
+
+.formRootContainer input:not(input[type="checkbox"]) {
+  background-color: #EFF3F8;
+  padding: 1rem;
+  border: none;
+  width: 100%;
+  border-radius: 8px;
+  color: var(--dark-10);
+
+  font-size: var(--md)
+}
+
+.formRootContainer input:not(input[type="checkbox"])::placeholder {
+  color: var(--dark-15);
+}
+
+.formRootContainer fieldset {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.formRootContainer fieldset + fieldset {
+  margin-top: 3.25rem;
+}
+
+.formRootContainer button {
+  width: 100%;
+  border: none;
+  padding: 1rem;
+  border-radius: 8px;
+  font-size: var(--xl);
+}
+
+.formRootContainer button:hover {
+  cursor: pointer;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .formRootContainer {
+    padding: 2rem 1.25rem;
+    width: 20rem;
+  }
+
+  .formRootContainer input:not(input[type="checkbox"]) {
+    font-size: var(--sm);
+    padding: 0.75rem;
+  }
+
+  .formRootContainer header {
+    margin-top: 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .formRootContainer button {
+    font-size: var(--md);
+  }
+}
+
+@media (max-width: 1280px) {
+  .formRootContainer {
+    min-width: 20rem;
+  }
+}

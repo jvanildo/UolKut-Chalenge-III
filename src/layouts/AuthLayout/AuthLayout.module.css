@@ -1,0 +1,54 @@
+.authLayoutContainer {
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.authLayoutContainer header {
+  justify-content: space-evenly;
+}
+
+.authLayoutContainer main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex: 1;
+}
+
+.authLayoutContainer article {
+  display: flex;
+  gap: 2rem;
+
+  padding: 3.5rem 1.5rem;
+}
+
+.authLayoutContainer article aside {
+  position: relative;
+  max-width: 50rem;
+}
+
+.authLayoutContainer article aside img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+.authLayoutContainer article aside p {
+  position: absolute;
+  bottom: 2rem;
+  left: 2rem;
+
+  max-width: 80%;
+  color: var(--dark-40);
+  font-size: var(--4xl);
+  letter-spacing: -2px;
+}
+
+@media (max-width: 900px) {
+  .authLayoutContainer article aside {
+      display: none;
+  }
+}

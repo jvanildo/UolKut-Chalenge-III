@@ -1,0 +1,52 @@
+.hobbies_container{
+    display: grid;
+    height: 100vh;
+ 
+    grid-template-rows: 5.75rem auto 3rem;
+}
+
+.main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main article {
+    padding: 0 1rem;
+    display: flex;
+    gap: 2rem;
+    margin: 5rem;
+}
+
+.main article aside {
+    position: relative;
+    max-width: 50rem;
+}
+
+.main article aside img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 16px;
+}
+
+.main article aside p {
+    position: absolute;
+    bottom: 2rem;
+    left: 2rem;
+
+    max-width: 80%;
+    color: var(--dark-40);
+    font-size: var(--4xl);
+    letter-spacing: -2px;
+}
+
+@media (max-width: 800px) {
+    .login_container {
+        grid-template-rows: 5rem auto 3rem;
+    }
+
+    .main article aside {
+        display: none;
+    }
+}

@@ -1,0 +1,157 @@
+.container_all_elements {
+  display: flex;
+  height: 100vh;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  justify-content: center;
+  align-items: center;
+
+  gap: 2rem;
+}
+
+.container_user_profile_mobile{
+  display: none;
+}
+.container_user_edit_image_use {
+  gap: 2rem;
+  width: 80%;
+}
+
+.user_profile {
+  display: none;
+}
+
+.container_user_edit {
+  display: flex;
+  flex-direction: row;
+  margin-left: 2rem;
+  padding: 1rem;
+  width: 28rem;
+  max-width: 37rem;
+  border-radius: 12px;
+  background-color: var(--dark-30);
+
+}
+
+.container_elements_profile {
+  align-items: center;
+}
+
+.container_profile_mobile {
+  display: none;
+}
+
+.edit_profile {
+  background-color: var(--brand-color);
+  color: var(--dark-30);
+}
+
+.button_edit_profile {
+  margin-top: 1rem;
+  border: 1px solid var(--brand-color);
+}
+
+.button_edit_profile:hover {
+  transition: 1s;
+  border: 1px solid var(--dark-30);
+}
+
+.user_details {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.user_details div {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.user_details div dt {
+  color: var(--dark-20);
+}
+
+.user_details div dd {
+  color: var(--dark-10);
+}
+
+.user_details div dd:hover {
+  cursor: text;
+  opacity: .7;
+}
+
+.user_details span {
+  color: var(--brand-color);
+  cursor: pointer;
+  font-size: var(--sm);
+}
+
+.multiple_options_field_details {
+  display: flex;
+  align-items: center;
+}
+
+.multiple_options_field_details dd {
+  padding: 0.5rem 1rem;
+
+  color: var(--dark-10);
+  font-size: var(--sm);
+
+  border-radius: 30px;
+  border: 1px solid var(--brand-color);
+}
+
+@media (max-width: 900px) {
+  .container_profile {
+    display: none;
+  }
+
+  .container_all_elements {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1.5rem;
+    width: 100%;
+  }
+
+  .container_user_profile_mobile{
+    display: block;
+    width: 90%;
+    order: -2;
+    margin-top: 18rem;
+    height: 20rem;
+
+  }
+  .container_elements_profile {
+    width: 100%;
+  }
+
+  .user_profile {
+    display: block;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2rem;
+  }
+
+  .profile_info_container {
+    width: 100%;
+  }
+
+  .container_user_edit {
+    order: -1;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .container_profile_mobile {
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    order: -3;
+    margin-top: 2rem;
+  }
+
+}

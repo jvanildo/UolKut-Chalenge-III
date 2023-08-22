@@ -1,0 +1,135 @@
+.profileInfoContainer {
+  background-color: var(--dark-30);
+
+  padding: 1.5rem;
+  border-radius: 16px;
+
+  max-width: 37rem;
+}
+
+.profileInfoContainer h2 {
+  color: var(--dark-10);
+  font-size: clamp(var(--xl), 3vw, var(--3xl));
+  font-weight: 500;
+}
+
+.profileInfoContainer blockquote {
+  margin-top: 1.5rem;
+  position: relative;
+}
+
+.profileInfoContainer blockquote img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.profileInfoContainer p {
+  position: absolute;
+  left: 0.75rem;
+  bottom: 27%;
+  font-size: clamp(0.75rem, 2vw, var(--md));
+}
+
+.user_status {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin: 2rem 0;
+}
+
+.user_status div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.user_status dd {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.user_status span,
+dt {
+  color: var(--dark-10);
+}
+
+.user_details {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.user_details div {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.user_details div dt {
+  color: var(--dark-20);
+}
+
+.user_details div dd {
+  color: var(--dark-10);
+}
+
+.user_details span {
+  color: var(--brand-color);
+  cursor: pointer;
+  font-size: var(--sm);
+}
+
+.multiple_options_field_details {
+  display: flex;
+  align-items: center;
+}
+
+.multiple_options_field_details dd {
+  padding: 0.5rem 1rem;
+
+  color: var(--dark-10);
+  font-size: var(--sm);
+
+  border-radius: 30px;
+  border: 1px solid var(--brand-color);
+}
+
+@media (max-width: 800px) {
+  .profileInfoContainer {
+    width: 100%;
+  }
+
+  .profileInfoContainer blockquote {
+    margin-top: 1.5rem;
+    position: relative;
+
+    height: 5rem;
+  }
+
+  .profileInfoContainer blockquote p {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 100%;
+  }
+
+  .user_details {
+    font-size: .8rem;
+  }
+
+  .multiple_options_field_details dd,
+  .multiple_options_field_details span {
+    text-align: center;
+    font-size: .7rem;
+  }
+
+  .multiple_options_field_details dd {
+    font-size: .7rem;
+  }
+  .profileInfoContainer p{
+    bottom: 68%;
+  }
+  .isMobile {
+    display: none;
+  }
+}

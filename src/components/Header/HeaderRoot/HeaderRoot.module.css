@@ -1,0 +1,21 @@
+.header {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  padding-left: 3rem;
+  padding-right: 1rem;
+  background-color: var(--dark-30);
+  height: clamp(3.75rem, 10vw, 5.75rem);
+}
+
+.header h1 {
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 900px) {
+  .header nav {
+    display: none;
+  }
+}

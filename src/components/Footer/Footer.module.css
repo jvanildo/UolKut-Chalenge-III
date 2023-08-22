@@ -1,0 +1,13 @@
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--dark-30);
+
+  height: 3rem;
+}
+
+.footer p {
+  color: var(--brand-color);
+  font-size: clamp(var(--sm), 3vw, var(--lg));
+}
