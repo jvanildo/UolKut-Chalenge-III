@@ -12,7 +12,7 @@ export const FormRoot = ({ children }: FormRootProps) => {
     <section className={styles.formRootContainer}>
       <header>
         <img src={logoForm} alt="" />
-        <h2>Acesse o Orkut </h2>
+        <h2>Acesse o UOLKut </h2>
       </header>
 
       {children}
