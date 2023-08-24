@@ -1,21 +1,33 @@
 import { Form, Link, useNavigate } from "react-router-dom";
 import styles from "./FormLogin.module.css";
-import { useState } from "react";
-import { loginUsuario } from "../../../api";
+import { useState, useContext } from "react";
+import { LoginUsuario } from "../../../api";
+import { useCookies } from "react-cookie";
+import { userCookie } from "../../../context/CookieContext";
 
 export const FormLogin = () => {
+  const { setUserCookie } = useContext(userCookie);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const [cookies, setCookie] = useCookies(["accessToken"]);
 
   const handleFormSubmit = async (event: React.SyntheticEvent) => {
     event.preventDefault();
-    const status = await loginUsuario(email, password);
-    if (status != 200) {
+
+    const data = await LoginUsuario(email, password);
+    const accessToken = data.data.accessToken;
+
+    setCookie("accessToken", accessToken, { path: "/profile" });
+    const token = cookies;
+    console.log(token);
+    setUserCookie(token);
+
+    if (data.status != 200) {
       return;
     }
     navigate("/profile");
-    console.log(status);
+    console.log(data.status);
   };
 
   const onHandleInput = (event: React.ChangeEvent<HTMLInputElement>) => {

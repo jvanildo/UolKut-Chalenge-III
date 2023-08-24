@@ -1,20 +1,23 @@
 import styles from "./ProfileInfo.module.css";
-
 import star from "../../assets/images/Star.svg";
 import smiley from "../../assets/images/Smiley.svg";
 import thumbsUp from "../../assets/images/ThumbsUp.svg";
 import heart from "../../assets/images/Heart.svg";
 import bubble from "../../assets/images/Bubble.svg";
-
 export function ProfileInfo() {
-  const user = localStorage.getItem("user");
-  const userParsed = JSON.parse(user!);
-  console.log(userParsed);
+  // const user = localStorage.getItem("user");
+  // const userParsed = JSON.parse(user!);
+  // console.log(userParsed);
+  // const [cookies] = useCookies(["accessToken"]);
+
+  // const accessToken = cookies.accessToken;
+  // const user = GetUsuario();
+  // console.log(user);
 
   return (
     <section className={styles.profileInfoContainer}>
       <header>
-        <h2>Boa tarde,{userParsed.name}</h2>
+        {/* <h2>Boa tarde,{userParsed.name}</h2> */}
         <blockquote>
           <img src={bubble} alt="" />
           <p>Programar sem café é igual poeta sem poesia.</p>
@@ -56,7 +59,7 @@ export function ProfileInfo() {
       <dl className={styles.user_details}>
         <div>
           <dt>Relacionamento:</dt>
-          <dd>{userParsed.relacionamento}</dd>
+          {/* <dd>{userParsed.relacionamento}</dd> */}
         </div>
         <div>
           <dt>Aniversário:</dt>
@@ -72,7 +75,7 @@ export function ProfileInfo() {
         </div>
         <div>
           <dt>Quem sou eu:</dt>
-          <dd>{userParsed.job}</dd>
+          {/* <dd>{userParsed.job}</dd> */}
         </div>
         <div>
           <dt>Filhos:</dt>

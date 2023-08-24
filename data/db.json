@@ -58,7 +58,7 @@
     {
       "email": "jvcnf21@gmail.com",
       "password": "$2a$10$.0D9REr2LBn6odT7Xk/31e/4JHJs3nDwGNkwchVwOP5NBIiHjwsVi",
-      "name": "vanildo21",
+      "name": "vanildo",
       "relacionamento": "Casado",
       "job": "frontEnd",
       "country": "Brasil",
@@ -74,16 +74,16 @@
       "country": "Brasil",
       "state": "Recife",
       "id": 13
-    }
-  ],
-  "comments": [
+    },
     {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "email": "leandrohenrique@gmail.com",
+      "password": "$2a$10$e7/gznXHFkPZwsszrMr17OUk348UCSU44lhznB34sy3hjPvkbl.TK",
+      "name": "Leandro",
+      "relacionamento": "Viúvo",
+      "job": "Fiscal",
+      "country": "Brasil",
+      "state": "Recife",
+      "id": 14
     }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }

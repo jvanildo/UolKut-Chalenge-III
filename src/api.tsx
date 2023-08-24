@@ -1,10 +1,17 @@
 import axios from "axios";
+// import { useCookies } from "react-cookie";
 
-export const getUsuario = async () => {
-  const { data } = await axios.get(`http://localhost:3000/users`);
-  console.log(data);
-  return data;
-};
+// export const GetUsuario = async () =>
+//   const data = await axios.get(`http://localhost:3000/users`, {
+//     headers: {
+//       Authorization: `Bearer ${accessToken}`,
+//     },
+//   });
+
+//   const userData = data.data;
+//   console.log(userData);
+//   return userData;
+// };
 
 export const postUsuario = async (
   email: string,
@@ -27,6 +34,7 @@ export const postUsuario = async (
   const data = await axios.post("http://localhost:3000/register", user);
   console.log(data);
 };
+
 export const putUsuario = async (
   email: string,
   password: string,
@@ -49,7 +57,7 @@ export const putUsuario = async (
   console.log(data);
 };
 
-export const loginUsuario = async (email: string, password: string) => {
+export const LoginUsuario = async (email: string, password: string) => {
   const user = {
     email,
     password,
@@ -59,9 +67,5 @@ export const loginUsuario = async (email: string, password: string) => {
     .then((data) => data)
     .catch((error) => error);
   console.log(data.data.user);
-
-  localStorage.setItem("user", JSON.stringify(data.data.user));
-
-  const status = data.status;
-  return status;
+  return data;
 };
