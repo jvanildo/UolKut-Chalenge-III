@@ -1,69 +1,103 @@
 import { Form, Link, useNavigate } from "react-router-dom";
 import styles from "./FormAccount.module.css";
+import { useState } from "react";
+import { postUsuario } from "../../../api";
 
 export const FormAccount = () => {
   const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [relacionamento, setRelacionamento] = useState("");
+  const [name, setName] = useState("");
+  const [job, setJob] = useState("");
+  const [country, setCountry] = useState("");
+  const [state, setState] = useState("");
 
   const handleFormSubmit = (event: React.SyntheticEvent) => {
     event.preventDefault();
-    navigate("details");
+    postUsuario(email, password, name, relacionamento, job, country, state);
+    navigate("/");
   };
 
   return (
     <Form onSubmit={handleFormSubmit} className={styles.formContainer}>
       <fieldset>
         <p>
-          <label htmlFor="name">Nome</label>
-          <input
-            type="text"
-            id="name"
-            placeholder="João da Silva Bernardo"
-            required
-          />
-        </p>
-        <p>
-          <label htmlFor="email">Email</label>
           <input
             type="email"
             id="email"
-            placeholder="exemplo@email.com"
+            placeholder="E-mail"
             required
+            onChange={(e) => setEmail(e.target.value)}
           />
         </p>
         <p>
-          <label htmlFor="date">Data de Nascimento</label>
-          <input type="date" id="date" required />
-        </p>
-        <p>
-          <label htmlFor="password" id="city-state">
-            Cidade / Estado
-          </label>
-          <input type="text" id="city-state" placeholder="Recife-PE" required />
-        </p>
-        <p>
-          <label htmlFor="password">Senha</label>
           <input
             type="password"
             id="password"
-            placeholder="********"
+            placeholder="password"
             minLength={8}
+            onChange={(e) => setPassword(e.target.value)}
             required
           />
         </p>
         <p>
-          <label htmlFor="confirm-password">Confirmar Senha</label>
           <input
-            type="password"
-            id="confirm-password"
-            placeholder="********"
+            type="text"
+            name="name"
+            placeholder="Nome"
+            onChange={(e) => setName(e.target.value)}
             required
-            minLength={8}
           />
+        </p>
+        <p>
+          <input
+            type="text"
+            name="job"
+            placeholder="Profissão"
+            onChange={(e) => {
+              setJob(e.target.value);
+            }}
+            required
+          />
+        </p>
+        <p>
+          <input
+            type="text"
+            id="city-state"
+            placeholder="País"
+            onChange={(e) => {
+              setCountry(e.target.value);
+            }}
+            required
+          />
+        </p>
+        <p>
+          <input
+            type="text"
+            id="city-state"
+            placeholder="Cidade"
+            onChange={(e) => {
+              setState(e.target.value);
+            }}
+            required
+          />
+        </p>
+        <p className="formDetailsContainer">
+          <label>Status de Relacionamento</label>
+          <select onChange={(e) => setRelacionamento(e.target.value)} required>
+            <option disabled selected value="">
+              Selecione uma opção
+            </option>
+            <option>Solteiro</option>
+            <option>Casado</option>
+            <option>Viúvo</option>
+          </select>
         </p>
       </fieldset>
 
       <fieldset>
-        <button className={styles.button_continue}>Continuar</button>
+        <button className={styles.button_continue}>Salvar</button>
 
         <Link to="/">
           <button className={styles.button_back}>Já tenho uma conta</button>
