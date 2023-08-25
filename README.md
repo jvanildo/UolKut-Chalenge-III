@@ -2,7 +2,7 @@
 ## Installation
 
 ```bash
-  git clone https://github.com/Squad-08-Compass/desafio-02.git
+  git clone [https://github.com/jvanildo/UolKut-Chalenge-III.git]
 ```
 
 ```bash
