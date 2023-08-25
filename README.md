@@ -2,7 +2,7 @@
 ## Installation
 
 ```bash
-  git clone [https://github.com/jvanildo/UolKut-Chalenge-III.git]
+  git clone https://github.com/jvanildo/UolKut-Chalenge-III.git
 ```
 
 ```bash
