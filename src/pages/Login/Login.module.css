@@ -1,5 +1,5 @@
 .article {
-    padding: 0 1rem;
+    padding: 0;
     display: flex;
     gap: 2rem;
     max-height: 37.5rem;

@@ -29,9 +29,6 @@
 }
 
 @media (max-width: 800px) {
-    .login_container {
-        grid-template-rows: 5rem auto 3rem;
-    }
 
     .article aside {
         display: none;

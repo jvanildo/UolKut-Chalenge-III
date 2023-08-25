@@ -1,8 +1,8 @@
-import { Form, Link, useNavigate } from "react-router-dom";
+import { Form, useNavigate } from "react-router-dom";
 import styles from "./FormAccount.module.css";
 import { useState } from "react";
 import { postUsuario } from "../../../api";
-
+import caretDown from "../../../assets/images/CaretDown.svg";
 export const FormAccount = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
@@ -35,7 +35,7 @@ export const FormAccount = () => {
           <input
             type="password"
             id="password"
-            placeholder="password"
+            placeholder="Senha"
             minLength={8}
             onChange={(e) => setPassword(e.target.value)}
             required
@@ -50,58 +50,79 @@ export const FormAccount = () => {
             required
           />
         </p>
-        <p>
-          <input
-            type="text"
-            name="job"
-            placeholder="Profissão"
-            onChange={(e) => {
-              setJob(e.target.value);
-            }}
-            required
-          />
-        </p>
-        <p>
-          <input
-            type="text"
-            id="city-state"
-            placeholder="País"
-            onChange={(e) => {
-              setCountry(e.target.value);
-            }}
-            required
-          />
-        </p>
-        <p>
-          <input
-            type="text"
-            id="city-state"
-            placeholder="Cidade"
-            onChange={(e) => {
-              setState(e.target.value);
-            }}
-            required
-          />
-        </p>
-        <p className="formDetailsContainer">
-          <label>Status de Relacionamento</label>
-          <select onChange={(e) => setRelacionamento(e.target.value)} required>
-            <option disabled selected value="">
-              Selecione uma opção
-            </option>
-            <option>Solteiro</option>
-            <option>Casado</option>
-            <option>Viúvo</option>
-          </select>
-        </p>
+        <section className={styles.footer_form}>
+          <section className={styles.container_footer_form}>
+            <input
+              type="date"
+              name="Nascimento"
+              id={styles.nascimento}
+              placeholder="Nascimento"
+            />
+            <p>
+              <input
+                type="text"
+                id="city-state"
+                placeholder="País"
+                onChange={(e) => {
+                  setCountry(e.target.value);
+                }}
+                required
+              />
+            </p>
+          </section>
+          <section className={styles.container_footer_form}>
+            <p>
+              <input
+                type="text"
+                name="job"
+                placeholder="Profissão"
+                onChange={(e) => {
+                  setJob(e.target.value);
+                }}
+                required
+              />
+            </p>
+            <p>
+              <input
+                type="text"
+                id="city-state"
+                placeholder="Cidade"
+                onChange={(e) => {
+                  setState(e.target.value);
+                }}
+                required
+              />
+            </p>
+            <p>
+              <select
+                onChange={(e) => setRelacionamento(e.target.value)}
+                required
+              >
+                <option disabled selected value="">
+                  Relacionamento
+                </option>
+                <option>Solteiro</option>
+                <hr />
+                <option>Casado</option>
+                <hr />
+                <option>Divorciado</option>
+                <hr />
+                <option>Namorando</option>
+                <hr />
+                <option>Preucupado</option>
+              </select>
+              <img
+                src={caretDown}
+                className={styles.caretdown_account}
+                alt=""
+              />
+            </p>
+          </section>
+        </section>
       </fieldset>
 
       <fieldset>
-        <button className={styles.button_continue}>Salvar</button>
-
-        <Link to="/">
-          <button className={styles.button_back}>Já tenho uma conta</button>
-        </Link>
+        <button className={styles.button_continue}>Criar conta</button>
       </fieldset>
     </Form>
   );

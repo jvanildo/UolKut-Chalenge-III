@@ -56,7 +56,7 @@ export const FormLogin = () => {
           <button className={styles.button_register}>Criar uma conta</button>
         </Link>
 
-        <a href="#">Esqueci a minha senha</a>
+        <a href="">Esqueci a minha senha</a>
       </fieldset>
     </Form>
   );

@@ -5,6 +5,9 @@
     border-bottom: 1px solid var(--brand-color);
     letter-spacing: -1px;
 }
+.formLoginContainer{
+    margin-top: 2rem;
+}
 
 .checkboxContainer {
     display: flex;
@@ -41,6 +44,7 @@
 }
 
 .button_login {
+    margin-top: -1rem;
     background-color: var(--brand-color);
     color: white;
 }

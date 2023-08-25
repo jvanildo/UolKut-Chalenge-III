@@ -3,8 +3,7 @@
   width: 100%;
   align-items: center;
   justify-content: center;
-  padding-left: 3rem;
-  padding-right: 1rem;
+  padding: 1rem 1rem 1rem 3rem;
   background-color: var(--dark-30);
   height: clamp(3.75rem, 10vw, 5.75rem);
 }
