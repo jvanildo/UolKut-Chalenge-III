@@ -7,14 +7,14 @@ import heart from "../../assets/images/Heart.svg";
 import bubble from "../../assets/images/Bubble.svg";
 
 export function ProfileInfo() {
-  const user = localStorage.getItem("user");
-  const userParsed = JSON.parse(user!);
-  console.log(userParsed);
+  // const user = localStorage.getItem("user");
+  // const userParsed = JSON.parse(user!);
+  // console.log(userParsed);
 
   return (
     <section className={styles.profileInfoContainer}>
       <header>
-        <h2>Boa tarde,{userParsed.name}</h2>
+        <h2>Boa tarde,Vanildo</h2>
         <blockquote>
           <img src={bubble} alt="" />
           <p>Programar sem café é igual poeta sem poesia.</p>
@@ -56,7 +56,7 @@ export function ProfileInfo() {
       <dl className={styles.user_details}>
         <div>
           <dt>Relacionamento:</dt>
-          <dd>{userParsed.relacionamento}</dd>
+          <dd>Preucupado</dd>
         </div>
         <div>
           <dt>Aniversário:</dt>
@@ -72,7 +72,7 @@ export function ProfileInfo() {
         </div>
         <div>
           <dt>Quem sou eu:</dt>
-          <dd>{userParsed.job}</dd>
+          <dd>Desenvolvedor</dd>
         </div>
         <div>
           <dt>Filhos:</dt>
