@@ -1,88 +1,84 @@
+import { Link } from "react-router-dom";
 import { Button } from "../../components/Button";
 import { UserProfile } from "../../components/UserProfile";
 import styles from "./EditProfile.module.css";
+import { Header } from "../../components/Header";
+import CaretDown from "../../assets/images/CaretDown.svg";
+import pencil from "../../assets/images/Pencil.svg";
 
 export const EditProfile = () => {
   return (
-    <section className={styles.container_all_elements}>
-      <div className={styles.container_user_profile_mobile}>
-        <UserProfile />
-      </div>
-      <section className={styles.container_user_edit}>
-        <dl className={styles.user_details}>
-          <div>
-            <dt>Relacionamento:</dt>
-            <dd>Solteiro</dd>
-          </div>
-          <div>
-            <dt>Aniversário:</dt>
-            <dd>21 de Julho</dd>
-          </div>
-          <div>
-            <dt>Idade:</dt>
-            <dd>22</dd>
-          </div>
-          <div>
-            <dt>Interesses no Orkut:</dt>
-            <dd>Solteiro</dd>
-          </div>
-          <div>
-            <dt>Quem sou eu:</dt>
-            <dd>Programador</dd>
-          </div>
-          <div>
-            <dt>Filhos:</dt>
-            <dd>Não</dd>
-          </div>
-          <div>
-            <dt>Sexo:</dt>
-            <dd>Masculino</dd>
-          </div>
-          <div>
-            <dt>Fumo:</dt>
-            <dd>Não</dd>
-          </div>
-          <div>
-            <dt>Bebo:</dt>
-            <dd>Depende do dia</dd>
-          </div>
-          <div>
-            <dt>Moro:</dt>
-            <dd>Guarantã</dd>
-          </div>
-          <div>
-            <dt>País:</dt>
-            <dd>Brasil</dd>
-          </div>
-          <div>
-            <dt>Cidade natal:</dt>
-            <dd>São Paulo</dd>
-          </div>
-          <div className={styles.multiple_options_field_details}>
-            <dt>Músicas:</dt>
-            <dd>Trap</dd>
-            <dd>Rap</dd>
-            <dd>Indie</dd>
-          </div>
-          <div className={styles.multiple_options_field_details}>
-            <dt>Filmes:</dt>
-            <dd>A rede social</dd>
-            <dd>Meu amigo totoro</dd>
-          </div>
-        </dl>
-      </section>
+    <>
+      <section className={styles.container_all_elements}>
+        <Header.Root>
+          <Header.Profile />
+        </Header.Root>
 
-      <section className={styles.container_elements_profile}>
-        <div className={styles.container_profile}>
-          <UserProfile />
-          <Button />
-          <Button text="Voltar" isNavigation path="/profile" />
-        </div>
-        <div className={styles.container_profile_mobile}>
-          <Button />
-          <Button text="Voltar" isNavigation path="/profile" />
+        <div className={styles.container_all_profile}>
+          <div className={styles.container_user_profile_mobile}>
+            <UserProfile />
+            <div className={styles.pencil}>
+              <img src={pencil} alt="" />
+            </div>
+          </div>
+
+          <section className={styles.container_elements_profile}>
+            <UserProfile />
+            <div className={styles.pencil}>
+              <img src={pencil} alt="" />
+            </div>
+          </section>
+
+          <section className={styles.container_user_edit}>
+            <div className={styles.title}>
+              <h1>Editar informações</h1>
+            </div>
+            <div className={styles.user_details}>
+              <div className={styles.container_input}>
+                <input type="text" name="Profissao" placeholder="Profissão" />
+                <input type="text" name="Nome" placeholder="Nome" />
+                <input type="text" name="Cidade" placeholder="Cidade" />
+                <input type="text" name="Pais" placeholder="País" />
+                <input type="date" name="Date" placeholder="Date" />
+                <input type="password" name="password" placeholder="Senha" />
+                <input
+                  type="password"
+                  name="Repeat-password"
+                  placeholder="Repetir senha"
+                />
+              </div>
+              <div className={styles.container_relacionamento}>
+                <select required>
+                  <option disabled selected value="">
+                    Relacionamento
+                  </option>
+                  <option>Solteiro</option>
+                  <hr />
+                  <option>Casado</option>
+                  <hr />
+                  <option>Divorciado</option>
+                  <hr />
+                  <option>Namorando</option>
+                  <hr />
+                  <option>Preucupado</option>
+                </select>
+                <img src={CaretDown} alt="" className={styles.caretdown} />
+              </div>
+            </div>
+
+            <div className={styles.container_profile}>
+              <Link to={"/profile"}>
+                <Button />
+              </Link>
+            </div>
+            <div className={styles.container_profile_mobile}>
+              <Link to={"/profile"}>
+                <Button />
+              </Link>
+            </div>
+          </section>
         </div>
       </section>
-    </section>
+    </>
   );
 };
