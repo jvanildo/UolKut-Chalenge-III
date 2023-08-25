@@ -1,0 +1,24 @@
+.input_submit_email{
+    margin-top: 3rem;
+    margin-bottom: 0;
+}
+.submit_code{
+    background-color: var(--brand-color);
+    color: #fff;
+}
+.container_remember{
+    margin-top: 6rem;
+    display: flex;
+    color: var(--brand-color);
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+}
+.button_enter_credentials{
+    color: var(--brand-color);
+    width: 20rem !important;
+}
+.footer_buton{
+    margin-top: 1.4rem !important;
+}
