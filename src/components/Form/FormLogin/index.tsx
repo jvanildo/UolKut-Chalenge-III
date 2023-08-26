@@ -1,29 +1,61 @@
 import { Form, Link, useNavigate } from "react-router-dom";
 import styles from "./FormLogin.module.css";
 import { useState } from "react";
-import { loginUsuario } from "../../../api";
+import { getAuth, signInWithEmailAndPassword } from "@firebase/auth";
 
 export const FormLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [errorPopup, setErrorPopup] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+
   const navigate = useNavigate();
 
-  const handleFormSubmit = async (event: React.SyntheticEvent) => {
+  const AuthLogin = (event: React.SyntheticEvent) => {
     event.preventDefault();
-    const status = await loginUsuario(email, password);
-    if (status != 200) {
-      return;
-    }
-    navigate("/profile");
-    console.log(status);
+    setIsLoading(true);
+    const auth = getAuth();
+    setTimeout(async () => {
+      try {
+        signInWithEmailAndPassword(auth, email, password)
+          .then((userCredential) => {
+            const user = userCredential.user;
+            console.log(user);
+            navigate("/Profile");
+          })
+          .catch((error) => {
+            setErrorPopup(true);
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            if (
+              error.code === "auth/user-not-found" ||
+              error.code === "auth/wrong-password"
+            ) {
+              setErrorMessage("Usuário ou senha inválidos.");
+            }
+            console.log(
+              "Autentição de email e senhas não conferem",
+              errorCode,
+              errorMessage,
+            );
+          });
+      } catch (error) {
+        console.log("Error:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    }, 4000);
   };
 
   const onHandleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
+    setErrorPopup(false);
   };
 
   return (
-    <Form onSubmit={handleFormSubmit} className={styles.formLoginContainer}>
+    <Form onSubmit={AuthLogin} className={styles.formLoginContainer}>
+      {errorPopup && <div className={styles.errorPopup}>{errorMessage}</div>}
       <fieldset>
         <p>
           <input
@@ -50,7 +82,9 @@ export const FormLogin = () => {
       </fieldset>
 
       <fieldset>
-        <button className={styles.button_login}>Entrar na conta</button>
+        <button className={styles.button_login} disabled={isLoading}>
+          {isLoading ? "Carregando..." : "Entrar na conta"}
+        </button>
 
         <Link to="/register">
           <button className={styles.button_register}>Criar uma conta</button>

@@ -1,8 +1,12 @@
 import { Form, useNavigate } from "react-router-dom";
 import styles from "./FormAccount.module.css";
 import { useState } from "react";
-import { postUsuario } from "../../../api";
+import { addDoc, collection, getDocs, getFirestore } from "firebase/firestore";
+import { auth } from "../../../service/FirebaseConfig";
+import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
+import { firebaseConfig } from "../../../service/FirebaseConfig";
 import caretDown from "../../../assets/images/CaretDown.svg";
+
 export const FormAccount = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
@@ -12,10 +16,32 @@ export const FormAccount = () => {
   const [job, setJob] = useState("");
   const [country, setCountry] = useState("");
   const [state, setState] = useState("");
+  const [isCreatingAccount, setIsCreatingAccount] = useState(false);
+  const [createUserWithEmailAndPassword, user, error] =
+    useCreateUserWithEmailAndPassword(auth);
+  const db = getFirestore(firebaseConfig);
+  const listUser = collection(db, "dbUol");
 
-  const handleFormSubmit = (event: React.SyntheticEvent) => {
+  const handleFormSubmit = async (event: React.SyntheticEvent) => {
     event.preventDefault();
-    postUsuario(email, password, name, relacionamento, job, country, state);
+    try {
+      setIsCreatingAccount(true);
+      const createUser = await createUserWithEmailAndPassword(email, password);
+      console.log(createUser);
+      const userValues = await addDoc(listUser, {
+        email,
+        state,
+        country,
+        job,
+        name,
+        password,
+        relacionamento,
+      });
+      console.log(userValues);
+    } catch (error) {
+      console.log("error:", error);
+    }
+    setIsCreatingAccount(true);
     navigate("/");
   };
 
@@ -109,7 +135,7 @@ export const FormAccount = () => {
                 <hr />
                 <option>Namorando</option>
                 <hr />
-                <option>Preucupado</option>
+                <option>Preocupado</option>
               </select>
               <img
                 src={caretDown}
@@ -122,7 +148,9 @@ export const FormAccount = () => {
       </fieldset>
 
       <fieldset>
-        <button className={styles.button_continue}>Criar conta</button>
+        <button className={styles.button_continue}>
+          {isCreatingAccount ? "Cadastrando, aguarde..." : "Criar conta"}
+        </button>
       </fieldset>
     </Form>
   );
