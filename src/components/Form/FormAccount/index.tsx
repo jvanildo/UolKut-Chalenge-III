@@ -60,6 +60,7 @@ export const FormAccount = () => {
         AgeTransform,
         name,
         relationship,
+        date,
       });
       console.log(userValues);
       navigate("/");
