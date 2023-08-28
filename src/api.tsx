@@ -1,67 +1,46 @@
-import axios from "axios";
+import { useEffect } from "react";
+import {
+  collection,
+  getDocs,
+  getFirestore,
+  query,
+  where,
+} from "firebase/firestore";
+import { useState, useContext } from "react";
+import { UserContext } from "./context/UserContext";
 
-export const getUsuario = async () => {
-  const { data } = await axios.get(`http://localhost:3000/users`);
-  console.log(data);
-  return data;
-};
+export function GetUserData() {
+  interface User {
+    uid: string;
+    state: string;
+    country: string;
+    job: string;
+    AgeTransform: number;
+    name: string;
+    relationship: string;
+  }
+  const { uid } = useContext(UserContext)!;
+  const [contextData, setcontextData] = useState<User | null>(null);
+  useEffect(() => {
+    const getUserData = async () => {
+      try {
+        console.log(uid);
+        const db = getFirestore();
+        const q = query(collection(db, "dbUol"), where("uid", "==", uid));
 
-export const postUsuario = async (
-  email: string,
-  password: string,
-  name: string,
-  relacionamento: string,
-  job: string,
-  country: string,
-  state: string,
-) => {
-  const user = {
-    email,
-    password,
-    name,
-    relacionamento,
-    job,
-    country,
-    state,
-  };
-  const data = await axios.post("http://localhost:3000/register", user);
-  console.log(data);
-};
-export const putUsuario = async (
-  email: string,
-  password: string,
-  name: string,
-  relacionamento: string,
-  job: string,
-  country: string,
-  state: string,
-) => {
-  const user = {
-    email,
-    password,
-    name,
-    relacionamento,
-    job,
-    country,
-    state,
-  };
-  const data = await axios.put("http://localhost:3000/users", user);
-  console.log(data);
-};
+        const querySnapshot = await getDocs(q);
+        querySnapshot.forEach((doc) => {
+          console.log(doc.id, " => ", doc.data());
+          setcontextData(doc.data() as User);
+        });
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
 
-export const loginUsuario = async (email: string, password: string) => {
-  const user = {
-    email,
-    password,
-  };
-  const data = await axios
-    .post("http://localhost:3000/login", user)
-    .then((data) => data)
-    .catch((error) => error);
-  console.log(data.data.user);
+      console.log(contextData);
+    };
 
-  localStorage.setItem("user", JSON.stringify(data.data.user));
-
-  const status = data.status;
-  return status;
-};
+    getUserData();
+  }, [uid]);
+  return { contextData };
+}

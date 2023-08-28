@@ -1,7 +1,7 @@
 import { Form, useNavigate } from "react-router-dom";
 import styles from "./FormAccount.module.css";
 import { useState } from "react";
-import { addDoc, collection, getDocs, getFirestore } from "firebase/firestore";
+import { addDoc, collection, getFirestore } from "firebase/firestore";
 import { auth } from "../../../service/FirebaseConfig";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { firebaseConfig } from "../../../service/FirebaseConfig";
@@ -9,44 +9,74 @@ import caretDown from "../../../assets/images/CaretDown.svg";
 
 export const FormAccount = () => {
   const navigate = useNavigate();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [relacionamento, setRelacionamento] = useState("");
+  const [relationship, setRelationship] = useState("");
   const [name, setName] = useState("");
   const [job, setJob] = useState("");
   const [country, setCountry] = useState("");
   const [state, setState] = useState("");
+  const [date, setDate] = useState("");
+
+  const [errorPopup, setErrorPopup] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+
   const [isCreatingAccount, setIsCreatingAccount] = useState(false);
-  const [createUserWithEmailAndPassword, user, error] =
+  const [createUserWithEmailAndPassword] =
     useCreateUserWithEmailAndPassword(auth);
   const db = getFirestore(firebaseConfig);
   const listUser = collection(db, "dbUol");
 
+  function DateForAge(birthdayDate: string) {
+    const dateNow = new Date();
+    const birthDateAtt = new Date(birthdayDate);
+    let age = dateNow.getFullYear() - birthDateAtt.getFullYear();
+    const ageDiff = dateNow.getMonth() - birthDateAtt.getMonth();
+
+    if (
+      ageDiff < 0 ||
+      (ageDiff === 0 && dateNow.getDate() < birthDateAtt.getDate())
+    ) {
+      age--;
+    }
+
+    return age;
+  }
+  const AgeTransform = DateForAge(date);
+
   const handleFormSubmit = async (event: React.SyntheticEvent) => {
     event.preventDefault();
+
     try {
       setIsCreatingAccount(true);
-      const createUser = await createUserWithEmailAndPassword(email, password);
-      console.log(createUser);
+      const newUser = await createUserWithEmailAndPassword(email, password);
+      console.log(newUser);
       const userValues = await addDoc(listUser, {
-        email,
+        uid: newUser?.user.uid,
         state,
         country,
         job,
+        AgeTransform,
         name,
-        password,
-        relacionamento,
+        relationship,
       });
       console.log(userValues);
+      navigate("/");
     } catch (error) {
       console.log("error:", error);
+      setErrorPopup(true);
+      if (error) {
+        setErrorPopup(true);
+        setErrorMessage("Email já cadastrado!");
+      }
     }
     setIsCreatingAccount(true);
-    navigate("/");
   };
 
   return (
     <Form onSubmit={handleFormSubmit} className={styles.formContainer}>
+      {errorPopup && <div className={styles.errorPopup}>{errorMessage}</div>}
       <fieldset>
         <p>
           <input
@@ -81,8 +111,11 @@ export const FormAccount = () => {
             <input
               type="date"
               name="Nascimento"
-              id={styles.nascimento}
+              id="nascimento"
               placeholder="Nascimento"
+              onChange={(e) => {
+                setDate(e.target.value);
+              }}
             />
             <p>
               <input
@@ -121,7 +154,7 @@ export const FormAccount = () => {
             </p>
             <p>
               <select
-                onChange={(e) => setRelacionamento(e.target.value)}
+                onChange={(e) => setRelationship(e.target.value)}
                 required
               >
                 <option disabled selected value="">

@@ -1,20 +1,60 @@
 import styles from "./ProfileInfo.module.css";
-
+import { useState, useContext, useEffect } from "react";
 import star from "../../assets/images/Star.svg";
 import smiley from "../../assets/images/Smiley.svg";
 import thumbsUp from "../../assets/images/ThumbsUp.svg";
 import heart from "../../assets/images/Heart.svg";
 import bubble from "../../assets/images/Bubble.svg";
+import {
+  collection,
+  getDocs,
+  getFirestore,
+  query,
+  where,
+} from "firebase/firestore";
+import { UserContext } from "../../context/UserContext";
 
 export function ProfileInfo() {
-  // const user = localStorage.getItem("user");
-  // const userParsed = JSON.parse(user!);
-  // console.log(userParsed);
+  const { uid } = useContext(UserContext)!;
+  const [contextData, setcontextData] = useState<User | null>(null);
+
+  interface User {
+    uid: string;
+    state: string;
+    country: string;
+    job: string;
+    AgeTransform: number;
+    name: string;
+    relationship: string;
+  }
+
+  const getUserData = async () => {
+    try {
+      console.log(uid);
+      console.log("teste");
+      const db = getFirestore();
+      const q = query(collection(db, "dbUol"), where("uid", "==", uid));
+
+      const querySnapshot = await getDocs(q);
+      querySnapshot.forEach((doc) => {
+        console.log(doc.id, " => ", doc.data());
+        setcontextData(doc.data() as User);
+      });
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+    }
+
+    console.log(contextData);
+  };
+
+  useEffect(() => {
+    getUserData();
+  }, [uid]);
 
   return (
     <section className={styles.profileInfoContainer}>
       <header>
-        <h2>Boa tarde,Vanildo</h2>
+        <h2>Boa tarde,{contextData?.name}</h2>
         <blockquote>
           <img src={bubble} alt="" />
           <p>Programar sem café é igual poeta sem poesia.</p>
@@ -56,7 +96,7 @@ export function ProfileInfo() {
       <dl className={styles.user_details}>
         <div>
           <dt>Relacionamento:</dt>
-          <dd>Preucupado</dd>
+          <dd>{contextData?.relationship}</dd>
         </div>
         <div>
           <dt>Aniversário:</dt>
@@ -64,43 +104,19 @@ export function ProfileInfo() {
         </div>
         <div>
           <dt>Idade:</dt>
-          <dd>22</dd>
-        </div>
-        <div>
-          <dt>Interesses no Orkut:</dt>
-          <dd>Solteiro</dd>
-        </div>
-        <div>
-          <dt>Quem sou eu:</dt>
-          <dd>Desenvolvedor</dd>
-        </div>
-        <div>
-          <dt>Filhos:</dt>
-          <dd>Não</dd>
-        </div>
-        <div>
-          <dt>Sexo:</dt>
-          <dd>Masculino</dd>
-        </div>
-        <div>
-          <dt>Fumo:</dt>
-          <dd>Não</dd>
-        </div>
-        <div>
-          <dt>Bebo:</dt>
-          <dd>Depende do dia</dd>
+          <dd>{contextData?.AgeTransform} anos</dd>
         </div>
         <div>
           <dt>Moro:</dt>
-          <dd>Guarantã</dd>
+          <dd>{contextData?.state}</dd>
         </div>
         <div>
           <dt>País:</dt>
-          <dd>Brasil</dd>
+          <dd>{contextData?.country}</dd>
         </div>
-        <div>
+        <div className={styles.container_last_dd}>
           <dt>Cidade natal:</dt>
-          <dd>São Paulo</dd>
+          <dd>{contextData?.state}</dd>
         </div>
         <div className={styles.multiple_options_field_details}>
           <dt>Músicas:</dt>
