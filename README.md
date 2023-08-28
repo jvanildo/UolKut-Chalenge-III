@@ -2,11 +2,11 @@
 ## Installation
 
 ```bash
-  git clone https://github.com/Squad-08-Compass/desafio-02.git
+  git clone https://github.com/jvanildo/UolKut-Chalenge-III.git
 ```
 
 ```bash
-  cd desafio-02
+  cd uolkut-chalenge-iii
 ```
 
 ```bash
@@ -18,6 +18,8 @@
 - React
 - Typescript
 - CSS Modules
+- Firebase
+- Jwt
 
 ## Eslint and Prettier
 

@@ -57,7 +57,7 @@ dt {
 .user_details {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 2rem;
 }
 
 .user_details div {
@@ -93,7 +93,9 @@ dt {
   border-radius: 30px;
   border: 1px solid var(--brand-color);
 }
-
+.container_last_dd{
+  margin-bottom: 4rem;
+}
 @media (max-width: 800px) {
   .profileInfoContainer {
     width: 100%;

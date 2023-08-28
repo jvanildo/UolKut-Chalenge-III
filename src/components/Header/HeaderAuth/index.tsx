@@ -5,7 +5,6 @@ export const HeaderAuth = () => {
     <>
       <nav className={styles.nav}>
         <ul>
-          <li>Sobre o Orkut</li>
           <li>Centro de segurança</li>
         </ul>
       </nav>

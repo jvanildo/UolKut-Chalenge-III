@@ -1,21 +1,54 @@
 .formContainer {
-  overflow-y: scroll;
-}
-
-.formContainer p {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  width: 100%;
+}
+
+.container_footer_form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+
+select {
+  background-color: #EFF3F8;
+  padding: 16px;
+  border: none;
+  width: 10rem;
+  border-radius: 8px;
+  color: var(--dark-10);
+  appearance: none;
+}
+
+.caretdown_account  {
+  position: relative;
+  pointer-events: none;
+  left: 8.4rem;
+  bottom: 2.3rem;
+}
+.label_date{
+  position:absolute;
+  bottom:20rem;
+}
+
+.footer_form {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
 }
 
 .button_continue {
+  padding: 0% !important;
+  font-size: 1.2rem !important;
+  margin-top: -4.4rem !important;
   background-color: var(--brand-color);
-  color: white; 
+  color: white;
+  height: 3rem;
 }
 
-.button_continue:hover{
+.button_continue:hover {
   opacity: 0.8;
-
 }
 
 .button_back {
@@ -24,6 +57,10 @@
 
 }
 
-.button_back:hover{
+.button_back:hover {
   opacity: 0.7;
+}
+.errorPopup{
+  padding-left: .5rem;
+  color: var(--brand-color);
 }
