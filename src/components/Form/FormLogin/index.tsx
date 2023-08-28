@@ -1,7 +1,8 @@
 import { Form, Link, useNavigate } from "react-router-dom";
 import styles from "./FormLogin.module.css";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { getAuth, signInWithEmailAndPassword } from "@firebase/auth";
+import { UserContext } from "../../../context/UserContext";
 
 export const FormLogin = () => {
   const [email, setEmail] = useState("");
@@ -9,6 +10,8 @@ export const FormLogin = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [errorPopup, setErrorPopup] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+
+  const { setUid } = useContext(UserContext)!;
 
   const navigate = useNavigate();
 
@@ -20,8 +23,8 @@ export const FormLogin = () => {
       try {
         signInWithEmailAndPassword(auth, email, password)
           .then((userCredential) => {
-            const user = userCredential.user;
-            console.log(user);
+            setUid(userCredential.user?.uid);
+            console.log(userCredential.user?.uid);
             navigate("/Profile");
           })
           .catch((error) => {
