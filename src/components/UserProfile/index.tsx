@@ -44,7 +44,7 @@ export const UserProfile = () => {
 
   useEffect(() => {
     getUserData();
-  }, [uid]);
+  }, [contextData?.name]);
   return (
     <section className={styles.container_profile_user}>
       <div className={styles.container_desc_img_user}>

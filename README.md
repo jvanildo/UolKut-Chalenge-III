@@ -6,7 +6,7 @@
 ```
 
 ```bash
-  cd desafio-02
+  cd uolkut-chalenge-iii
 ```
 
 ```bash
@@ -18,6 +18,8 @@
 - React
 - Typescript
 - CSS Modules
+- Firebase
+- Jwt
 
 ## Eslint and Prettier
 

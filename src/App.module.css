@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,400;8..144,500;8..144,600;8..144,700;8..144,800&display=swap%27');
+
 :root {
   /* --- COLORS ---  */
   --brand-color: #ED6D25;
@@ -38,7 +40,7 @@
 }
 
 body, html {
-  font-family: sf-pro-display, sans-serif;
+  font-family: 'Roboto Flex', sans-serif;
   background-color: var(--background);
 }
 

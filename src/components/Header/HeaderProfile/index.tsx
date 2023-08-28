@@ -12,6 +12,7 @@ import {
 } from "firebase/firestore";
 import { UserContext } from "../../../context/UserContext";
 import { useEffect, useContext, useState } from "react";
+import { Link } from "react-router-dom";
 
 export const HeaderProfile = () => {
   const { uid } = useContext(UserContext)!;
@@ -48,12 +49,14 @@ export const HeaderProfile = () => {
 
   useEffect(() => {
     getUserData();
-  }, [uid]);
+  }, [contextData?.name]);
   return (
     <>
       <nav className={styles.nav}>
         <ul>
-          <li>Início</li>
+          <Link to={"/"}>
+            <li>Início</li>
+          </Link>
           <li className={styles.profile_nav}>Perfil</li>
           <li>Comunidades</li>
           <li>Jogos</li>

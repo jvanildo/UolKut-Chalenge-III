@@ -26,12 +26,12 @@ export function ProfileInfo() {
     AgeTransform: number;
     name: string;
     relationship: string;
+    date: string;
+    age: number;
   }
-
   const getUserData = async () => {
     try {
       console.log(uid);
-      console.log("teste");
       const db = getFirestore();
       const q = query(collection(db, "dbUol"), where("uid", "==", uid));
 
@@ -46,15 +46,16 @@ export function ProfileInfo() {
 
     console.log(contextData);
   };
-
   useEffect(() => {
     getUserData();
-  }, [uid]);
+  }, [contextData?.name]);
+
+  const cutDate = contextData?.date.substring(5).split("-").reverse().join("-");
 
   return (
     <section className={styles.profileInfoContainer}>
       <header>
-        <h2>Boa tarde,{contextData?.name}</h2>
+        <h2>Boa tarde, {contextData?.name}</h2>
         <blockquote>
           <img src={bubble} alt="" />
           <p>Programar sem café é igual poeta sem poesia.</p>
@@ -99,12 +100,16 @@ export function ProfileInfo() {
           <dd>{contextData?.relationship}</dd>
         </div>
         <div>
+          <dt>Profissão:</dt>
+          <dd>{contextData?.job}</dd>
+        </div>
+        <div>
           <dt>Aniversário:</dt>
-          <dd>21 de Julho</dd>
+          <dd>{cutDate}</dd>
         </div>
         <div>
           <dt>Idade:</dt>
-          <dd>{contextData?.AgeTransform} anos</dd>
+          <dd>{contextData?.age} anos</dd>
         </div>
         <div>
           <dt>Moro:</dt>
